@@ -6,9 +6,16 @@ void main() {
     'vegetarian': 6.5,
   };
 
-  // Example order
-  const order = ['margherita', 'pepperoni', 'pineapple'];
+  // Example orders
+  const orders = ['margherita', 'pepperoni'];
+  double total = 0;
+  for(int i =0; i<orders.length; i++) {
+    for(var item in pizzaPrices.entries){
+    if(item.key.contains(orders[i])){
+      total += item.value;
+    }
+   }
+  }
+   print("The total is : ${total}");
 
-  // Your code
-  print(pizzaPrices.keys);
 }
