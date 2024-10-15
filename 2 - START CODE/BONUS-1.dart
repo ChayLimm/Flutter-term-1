@@ -58,7 +58,7 @@ class Robot_movement{
       }
     }
 
-void turnRight(){
+    void turnRight(){
       switch (facing) {
         case Direction.north:
           facing = Direction.east;
