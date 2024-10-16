@@ -2,13 +2,13 @@ class Distance{
   final double distance;
   late double newValueInMeters;
   //this is name function return the newValue in meters
-  Distance.cms(this.distance){this.newValueInMeters = distance/1000;}
+  Distance.cms(this.distance){this.newValueInMeters = distance/100;}
   Distance.ms(this.distance){this.newValueInMeters = distance;}
   Distance.kms(this.distance){this.newValueInMeters = distance*1000;}
 
   double get ms => newValueInMeters;
   double get kms => newValueInMeters / 1000;
-  double get cms => newValueInMeters * 1000;
+  double get cms => newValueInMeters * 100;
 
   Distance operator +(Distance p){
     return Distance.ms(this.newValueInMeters + p.newValueInMeters);
