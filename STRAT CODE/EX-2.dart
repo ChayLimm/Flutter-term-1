@@ -1,9 +1,52 @@
 class BankAccount {
-    // TODO
+    final String userName;
+    late String userID; 
+    double credits;
+    double balances;
+
+    BankAccount(this.userID, this.userName, this.credits, this.balances);
+
+    double balance()=> this.balances;
+
+    double withdraw(double amount){
+      try {
+        
+          this.balances -= amount;
+          return amount;
+        
+      }catch (e) {
+        print(e); 
+        throw "Insufficeint balance";
+      }
+      
+    }
+
+    void credit(double amount)=>this.credits += amount;
+    
+
 }
 
 class Bank {
     // TODO
+    final bankName ;
+    List<BankAccount> accounts = [];
+
+    Bank(this.bankName);
+
+    createAccount(String userID,double balance, String username){
+      try{
+        
+        
+      }catch(e){
+        print(e);
+      }
+    }
+
+    
+
+
+
+
 }
  
 void main() {

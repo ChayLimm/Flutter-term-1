@@ -1,5 +1,13 @@
+import 'dart:async';
 import 'dart:collection';
 import 'dart:math';
+import 'dart:mirrors';
+
+Map<Skill,double> skillSalary ={
+  Skill.FLUTTER : 5000,
+  Skill.DART : 3000,
+  Skill.OTHER : 1000,
+};
 
 enum Skill { FLUTTER, DART, OTHER }
 
@@ -14,17 +22,17 @@ class Employee {
   double _baseSalary;
   List<Skill> _skills = [];
   Address _address;
-  int _yearsOfExperience;
+  double _yearsOfExperience;
 
   String get getName=> _name;
   double get getBaseSalary=> _baseSalary;
   List<Skill> get getSkills=> _skills;
   Address get getAddress=> _address;
-  int get getYearsOfExperience=> _yearsOfExperience;
+  double get getYearsOfExperience=> _yearsOfExperience;
 
 
   Employee(this._name, this._baseSalary,this._skills,this._address,this._yearsOfExperience);
-  Employee.mobileDeveloper(this._name, this._baseSalary,this._skills,this._address,this._yearsOfExperience){ 
+  Employee.mobileDeveloper(this._name, this._baseSalary,this._address,this._yearsOfExperience){ 
     if(_skills.isEmpty){
       _skills.add(Skill.DART);
       _skills.add(Skill.FLUTTER);
@@ -33,6 +41,7 @@ class Employee {
 
   void printDetails() {
     print('Employee: $getName, Base Salary: \$$getBaseSalary');
+    print(getSkills);
   }
 
   void computeSalary(){
@@ -42,22 +51,46 @@ class Employee {
     const double dartBonus = 3000;
     const double otherBonus = 1000;
 
-    int yearOfEperience = getYearsOfExperience;
-    double flutterSalary = flutterBonus * yearOfEperience;
-    double dartSalary = dartBonus * yearOfEperience;
-    double otherSalary = otherBonus * yearOfEperience;
-
+    double yearOfEperience = getYearsOfExperience;
     
+    List<Skill> skillData = getSkills;
   
+    double total = 0;
 
+    // for(var skill in skillData){
+    //   if(skill == Skill.values){
+    //     double salary = skillSalary[skill] ?? 0;
+    //     total = total + (salary*yearOfEperience);
+    //   }
+    // }
+
+//print salary base on the key skillSalary[Skill.FLUTTER]
+     
+    for(var skill in skillData){
+      if(skillSalary.containsKey(skill)){
+        total = total + skillSalary[skill]! ;
+      }
+    }
+    total = total + (yearOfEperience * 2000);
+
+    print(total);
   }
 
 }
 
 void main() {
-  var emp1 = Employee('Sokea', 40000);
+  var empAdd1 = Address("str32", "PhnomPenh", 12036) ;
+  var emp1 = Employee.mobileDeveloper("Sokchea",40000, empAdd1,3 );
   emp1.printDetails();
+  emp1.computeSalary();
 
-  var emp2 = Employee('Ronan', 45000);
+  List<Skill> skills= [];
+  skills.add(Skill.DART);
+
+  var empAdd2 = Address("str32", "PhnomPenh", 12036) ;
+  var emp2 = Employee("Sokchea",40000,skills, empAdd2,3 );
   emp2.printDetails();
+  emp2.computeSalary();
+
+
 }
