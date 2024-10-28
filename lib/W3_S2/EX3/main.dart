@@ -30,13 +30,22 @@ class _MyHomePageState extends State<MyHomePage> {
     ));
   }
 
-  Widget card(String title, Color color) {
+  Widget card(String title, Color? color) {
     return Container(
       margin: EdgeInsets.symmetric(vertical: 10),
       height: 44,
       decoration: BoxDecoration(
-        color: color,
+        gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment(0.8, 1),
+            colors: <Color>[
+              Color.fromARGB(255, 159, 211, 254),
+                color ?? Color.fromARGB(255, 159, 211, 254)
+            ], // Gradient from https://learnui.design/tools/gradient-generator.html
+            tileMode: TileMode.mirror,
+          ),
         borderRadius: BorderRadius.circular(22),
+
       ),
       child: Center(
         child: Text(
