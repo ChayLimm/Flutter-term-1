@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 // import 'package:lesson/W3_S2/EX1/main.dart';
 // import 'package:lesson/W3_S2/EX2/main.dart';
- import 'package:lesson/W3_S2/EX3/main.dart';
+//  import 'package:lesson/W3_S2/EX3/main.dart';
+// import 'package:lesson/W4_S1/EX1/main.dart';
+import 'package:lesson/W4_S1/EX2/main.dart';
 
 
 
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
     );
   }
 }
